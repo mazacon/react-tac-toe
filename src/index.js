@@ -126,7 +126,10 @@ class Game extends React.Component {
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<Game />);
 
+// takes in an array of 9 X/O's and determines if a line has been made.
+// if there has it will return 
 function calculateWinner(squares) {
+  // hardcode all possible line positions
   const lines = [
     [0, 1, 2],
     [3, 4, 5],
@@ -137,11 +140,16 @@ function calculateWinner(squares) {
     [0, 4, 8],
     [2, 4, 6]
   ];
+
+  // loop 8 times for each possible line and test against each
   for (let i = 0; i < lines.length; i++) {
+    // a b c = line indexes
     const [a, b, c] = lines[i];
+    // TODO: hard to understand this if statement
     if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
       return squares[a];
     }
   }
+  // if no winner yet return null
   return null;
 }
